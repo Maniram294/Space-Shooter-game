@@ -20,7 +20,7 @@ mixer.music.play()
 FPS = 5000
 clock = pygame.time.Clock()
 # Title and icon
-pygame.display.set_caption("Alien hunters")
+pygame.display.set_caption("SPACE SHOOTER")
 icon = pygame.image.load('spaceship.png')
 pygame.display.set_icon(icon)
 
@@ -62,14 +62,19 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 textX = 10
 textY = 10
 
-over_font=pygame.font.Font('freesansbold.ttf',64)
+over_font = pygame.font.Font('freesansbold.ttf', 64)
+
+
 def show_score(x, y):
     score = font.render("Score : " + str(score_value), True, (255, 255, 255), )
     screen.blit(score, (x, y))
 
+
 def game_over():
-    over_text = over_font.render("GAME OVER", True, (255, 150, 255) )
+    over_text = over_font.render("GAME OVER", True, (255, 150, 255))
     screen.blit(over_text, (200, 250))
+
+
 def fire_bullet(x, y):
     global bullet_state
     bullet_state = "fire"

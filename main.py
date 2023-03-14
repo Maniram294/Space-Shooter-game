@@ -62,12 +62,14 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 textX = 10
 textY = 10
 
-
+over_font=pygame.font.Font('freesansbold.ttf',64)
 def show_score(x, y):
     score = font.render("Score : " + str(score_value), True, (255, 255, 255), )
     screen.blit(score, (x, y))
 
-
+def game_over():
+    over_text = over_font.render("GAME OVER", True, (255, 150, 255) )
+    screen.blit(over_text, (200, 250))
 def fire_bullet(x, y):
     global bullet_state
     bullet_state = "fire"
@@ -129,6 +131,11 @@ while running:
 
     # Enemy movement
     for i in range(no_of_enemies):
+        if enemyY[i] > 400:
+            for j in range(no_of_enemies):
+                enemyY[j] = 2000
+            game_over()
+            break
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
             enemyX_change[i] = 2
